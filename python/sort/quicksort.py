@@ -1,3 +1,4 @@
 import random
 
-class Quciksort(object)::
+class Quciksort(object):
+	
