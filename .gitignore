@@ -4,5 +4,7 @@ n:
 *.so
 *.egg
 *.egg-info
+*.local
+.ipynb_checkpoints/*
 dist
 build
