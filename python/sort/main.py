@@ -1,4 +1,4 @@
-from Quicksort import Quicksort
+from quick import Quicksort
 
 def is_sorted(numbers):
     last_num = float("-inf")
