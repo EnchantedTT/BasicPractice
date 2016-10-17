@@ -6,6 +6,6 @@ n:
 *.egg-info
 *.local
 *.DS_Store
-.ipynb_checkpoints/*
+*checkpoint.ipynb
 dist
 build
