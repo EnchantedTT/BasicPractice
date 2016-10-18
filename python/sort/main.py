@@ -1,4 +1,5 @@
 from quick import Quicksort
+from bubble import BubbleSort
 
 def is_sorted(numbers):
     last_num = float("-inf")
@@ -30,6 +31,9 @@ def main():
     qs = Quicksort(numbers)
     output = qs.sort()
 
+    bs = BubbleSort(numbers)
+    output_bs = bs.sort()
+
     if is_sorted(output):
         print("** SUCCESS! **")
     else:
@@ -41,6 +45,18 @@ def main():
         print("Uh oh - something is missing.")
 
     print(output)
+
+    if is_sorted(output_bs):
+        print("** SUCCESS! **")
+    else:
+        print("Uh oh - not in order.")
+
+    if contain_same_ints(original, numbers):
+        print("** Contain the same elements! **")
+    else:
+        print("Uh oh - something is missing.")
+
+    print(output_bs)
 
 
 if __name__ == "__main__":
