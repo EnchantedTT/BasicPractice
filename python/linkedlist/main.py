@@ -1,48 +1,21 @@
-from node import Node
+from linked_list import LinkedList
 
-class LinkedList(object):
+def main():
+	l_list = LinkedList()
 
-	def __init__(self):
-		self.head = None
+	print 'Init size:', len(l_list) 
+	l_list.append(123)
 
-	def set_head(self, head_node):
-		self.head = head_node
+	print 'Size after append:', len(l_list)
 
-	def __len__(self):
-		count = 0
-		current = self.head
-		while current:
-			count += 1
-			current = current.get_next()
-		return count
+	print l_list
 
-	def __str__(self):
-		current = self.head
-		output = ""
-		while current:
-			output += str(current) + " -> "
-			current = current.get_next()
-		return output
+	l_list.push(11)
+	l_list.push(45)
+	print 'List after push:', l_list
 
-	#pop the last item from the list
-	def pop(self):
-		if self.head:
-			self.head = self.head.get_next()
-		else:
-			raise IndexError("Index out of range! Empty list!")
+	l_list.delete(11)
+	print 'List after delete 11:', l_list
 
-	#if contrains 
-	def contains(self, value):
-		flag = False
-		current = self.head
-		while current and not flag:
-			if current.get_data() = value:
-				flag = True
-			else:
-				current = current.get_next()
-		return flag
-
-	def delete(self, value):
-		current = self.head
-		
-
+if __name__ == "__main__":
+	main()
