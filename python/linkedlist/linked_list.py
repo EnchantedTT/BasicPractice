@@ -47,12 +47,12 @@ class LinkedList(object):
 		current = self.head
 		prev = None
 		while current:
-			if current.get_data == value:
+			if current.get_data() == value:
 				if prev:
 					prev.set_next(current.get_next())
 				else:
 					self.head = current.get_next()
-				continue
+				break
 			else:
 				prev = current
 				current = current.get_next()
