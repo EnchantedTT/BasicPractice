@@ -24,5 +24,14 @@ def main():
 
 	print 'contains 11: ', l_list.contains(11)
 
+	l_list.push(53)
+	l_list.push(78)
+	l_list.push(22)
+	l_list.push(9)
+	print 'List before reverse: ', l_list
+
+	l_list.reverse()
+	print 'List after reverse: ', l_list	
+
 if __name__ == "__main__":
 	main()

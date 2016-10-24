@@ -74,3 +74,22 @@ class LinkedList(object):
 			current = current.get_next()
 
 		current.set_next(node)
+
+	def reverse(self):
+		current = self.head
+		if not current:
+			return
+		if len(self) == 1:
+			return
+		elif len(self) == 2:
+			tmp = self.head
+			tmp.set_next(None)
+			self.head = self.head.get_next()
+			self.head.set_next(tmp)
+		else:
+			while current.get_next():
+				current_next = current.get_next()
+				current.set_next(current_next.get_next())
+				current_next.set_next(self.head)
+				self.set_head(current_next)
+
