@@ -7,5 +7,6 @@ n:
 *.local
 *.DS_Store
 *checkpoint.ipynb
+*.pickle
 dist
 build
