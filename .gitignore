@@ -8,5 +8,6 @@ n:
 *.DS_Store
 *checkpoint.ipynb
 *.pickle
+*.icloud
 dist
 build

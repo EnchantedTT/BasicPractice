@@ -24,7 +24,6 @@ def accuracy(predictions, labels):
 
 def reformat(dataset, labels):
 	dataset = dataset.reshape((-1, image_size * image_size)).astype(np.float32)
-	# Map 0 to [1.0, 0.0, 0.0 ...], 1 to [0.0, 1.0, 0.0 ...]
 	labels = (np.arange(num_labels) == labels[:,None]).astype(np.float32)
 	return dataset, labels
 train_dataset, train_labels = reformat(train_dataset, train_labels)
@@ -44,7 +43,7 @@ with graph.as_default():
 	tf_valid_dataset = tf.constant(valid_dataset)
 	tf_test_dataset = tf.constant(test_dataset)
 
-	# Variables.
+	#input
 	weights = tf.Variable(tf.truncated_normal([image_size * image_size, num_hidden]))
 	biases = tf.Variable(tf.zeros([num_hidden]))
 	logits = tf.matmul(tf_train_dataset, weights) + biases
@@ -65,21 +64,15 @@ with graph.as_default():
 	valid_prediction = tf.nn.softmax(tf.matmul(tf.sigmoid(tf.matmul(tf_valid_dataset, weights) + biases), h_weights) + h_biases)
 	test_prediction = tf.nn.softmax(tf.matmul(tf.sigmoid(tf.matmul(tf_test_dataset, weights) + biases), h_weights) + h_biases)
 
-num_steps = 30001
+num_steps = 1001
 
 with tf.Session(graph=graph) as session:
 	tf.global_variables_initializer().run()
 	print("Initialized")
 	for step in range(num_steps):
-		# Pick an offset within the training data, which has been randomized.
-		# Note: we could use better randomization across epochs.
 		offset = (step * batch_size) % (train_labels.shape[0] - batch_size)
-		# Generate a minibatch.
 		batch_data = train_dataset[offset:(offset + batch_size), :]
 		batch_labels = train_labels[offset:(offset + batch_size), :]
-		# Prepare a dictionary telling the session where to feed the minibatch.
-		# The key of the dictionary is the placeholder node of the graph to be fed,
-		# and the value is the numpy array to feed to it.
 		feed_dict = {tf_train_dataset : batch_data, tf_train_labels : batch_labels}
 		_, l, predictions = session.run([optimizer, loss, train_prediction], feed_dict=feed_dict)
 		if (step % 500 == 0):
