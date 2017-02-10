@@ -23,7 +23,6 @@ def bubblesort(a):
 		for j in xrange(0, i):
 			if a[j] > a[j + 1]:
 				a[j], a[j + 1] = a[j + 1], a[j]
-				flag = True
 				# tmp = a[j]
 				# a[j] = a[j + 1]
 				# a[j + 1] = tmp
