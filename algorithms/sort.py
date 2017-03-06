@@ -15,7 +15,14 @@ def mergesort(a):
 	pass
 
 def insertsort(a):
-	pass
+	for i in xrange(1, len(a)):
+		j = i - 1
+		tmp = a[i]
+		while j >= 0 and a[j] > tmp:
+			a[j + 1] = a[j]
+			j = j - 1
+		a[j + 1] = tmp	
+	return a
 
 #O(n**2)
 def bubblesort(a):
@@ -29,6 +36,7 @@ def bubblesort(a):
 	return a
 
 def sort(a):
+	print insertsort(a)
 	print quicksort(a)
 	print heapsort(a)
 	print mergesort(a)
